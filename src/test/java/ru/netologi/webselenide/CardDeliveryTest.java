@@ -26,7 +26,7 @@ public class CardDeliveryTest {
     public void meetingSuccessfullyScheduled() {
         open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Волгоград");
-        String planningDate = generateDate(4, "dd.mm.yyyy");
+        String planningDate = generateDate(4, "dd.MM.yyyy");
         $("[date-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
         $("[date-test-id='date'] input").setValue(planningDate);
         $("[date-test-id='name'] input").setValue("Иванов Иван");
