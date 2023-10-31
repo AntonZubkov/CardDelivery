@@ -25,15 +25,18 @@ public class CardDeliveryTest {
     @Test
     public void meetingSuccessfullyScheduled() {
         open("http://localhost:9999");
-        $("[data-test-id='city'] input").setValue("Волгоград");
+        $("[placeholder='Город']").setValue("Волгоград");
         String planningDate = generateDate(4, "dd.MM.yyyy");
-        $("[date-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
-        $("[date-test-id='date'] input").setValue(planningDate);
-        $("[date-test-id='name'] input").setValue("Иванов Иван");
-        $("[date-test-id='phone'] input").setValue("+79995555555");
-        $("[date-test-id='agreement']").click();
-        $("button.button").click();
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
+        $("[data-test-id='date'] input").setValue(planningDate);
+        //$("[value='2023-11-03']").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
+        //$("[value='2023-11-03']").setValue(planningDate);
+        $("[name='name']").setValue("Иванов Иван");
+        $("[name='phone']").setValue("+79995555555");
+        $("[name='agreement']").click();
+        $("button").click();
         $(".notification__content").shouldBe(Condition.visible, Duration.ofSeconds(15))
                 .shouldHave(Condition.exactText("Встреча успешно забронирована на " + planningDate));
     }
+
 }
