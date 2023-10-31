@@ -33,8 +33,8 @@ public class CardDeliveryTest {
         //$("[value='2023-11-03']").setValue(planningDate);
         $("[name='name']").setValue("Иванов Иван");
         $("[name='phone']").setValue("+79995555555");
-        $("[name='agreement']").click();
-        $("button").click();
+        $("[data-test-id='agreement']").click();
+        $("button.button").click();
         $(".notification__content").shouldBe(Condition.visible, Duration.ofSeconds(15))
                 .shouldHave(Condition.exactText("Встреча успешно забронирована на " + planningDate));
     }
